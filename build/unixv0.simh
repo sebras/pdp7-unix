@@ -21,6 +21,15 @@ set lpt disa
 set drm disa
 set dt disa
 
+# Enable GRAPHIC-2
+# (requires https://github.com/larsbrinkhoff/simh/tree/lars/graphics2)
+set g2in disabled
+set g2out disabled
+set graphic2 enabled
+set graphic2b enabled
+set graphic2c enabled
+set graphic2d enabled
+
 # show device settings:
 show dev
 
