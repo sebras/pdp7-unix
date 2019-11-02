@@ -228,7 +228,7 @@ putq: 0
    dac .+13
    tad o140000		" turn into "lac qtail"
    dac .+1
-   lac q1-1 ..		" fetch tail
+   lac q1+1 ..		" fetch tail
 "** 01-s1.pdf page 24
    sna			" non-zero?
    jmp .+6		"  no: is zero
