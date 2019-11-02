@@ -185,7 +185,7 @@ putq: 0
    dac .+13
    tad o140000
    dac .+1
-   lac q1-1 ..
+   lac q1+1 ..
 "** 01-s1.pdf page 24
    sna
    jmp .+6
@@ -211,7 +211,7 @@ srcdbs: 0
    jmp srcdbs i
    law 65	"** ??? crossed out
    tad 9f+t+1	"** crossed out isz 8 written
-   isz 9f+t+1
+   dac 9f+t+1
    isz 9f+t
    jmp 1b
    isz srcdbs
@@ -235,7 +235,7 @@ collapse: 0
    sna
    jmp 0f+3
    dac 0f+2
-   jms copy; 0:..; ..; ..
+   jms copy; 0:..;..;..
    -65
    tad edskbsp
    dac 9f+t
