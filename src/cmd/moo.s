@@ -5,8 +5,8 @@
 reset:
    jms messg; <es>;<et>;012;0
 1:
-   jms messg; <wr>; <u 077; 040; 0
-   sys open; moostat; 0
+   jms messg; <wr>; <u 077; 040; 0	" print 'wru? '
+   sys open; moostat; 0			" open file 'moostat' for reading
    spa
    sys exit
    dac fi
@@ -421,18 +421,18 @@ aver: 0
    jmp aver i
 1: .=.+1
 
-messg: 0
+messg: 0		" print out sequence of words after jms messg, ending with 0, continue executing at word after 0
    -1
    tad messg
-   dac 8
+   dac 8		" store pointer to first word to print
 1:
-   lac 8 i
+   lac 8 i		" dereference and increment stored pointer
    sna
-   jmp 8 i
-   dac 1f
+   jmp 8 i		" if pointer points to 0, jump to stored pointer (i.e. the address after 0)
+   dac 1f		" store dereferenced pointer as write argument
    lac d1
-   sys write; 1f; 1
-   jmp 1b
+   sys write; 1f; 1	" write one word to stdout
+   jmp 1b		" loop
 "** 09-1-35.pdf page 29
 1: 0
 
