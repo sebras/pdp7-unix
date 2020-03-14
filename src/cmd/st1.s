@@ -3,20 +3,20 @@
 
 t = 0
 
-start:			"[------ stuff for gravity - scan markup]
+start:                  "[------ stuff for gravity - scan markup]
 	law 13
 	sys sysloc
 	dac .pbson
 	lac pww
-	dac 1f
-	dac 2f
+	dac 1f          " *1 = pww
+	dac 2f          " *2 = pww
 	lac pw
 	dac 3f
 	-32
 	dac cplan
 4:
-	fld; 1:0
-	fmp; 2:0
+	fld; 1:0	" load aexp, ams and ans with &pww[0]
+	fmp; 2:0	
 	-1
 	tad aexp
 	dac aexp
@@ -114,14 +114,14 @@ loop3:
 	tad aexp
 	dac aexp
 	jms inscr
-		jmp loop4
+	jmp loop4
 	tad o141577
 	dac i clistp	"[crossed out with an arrow pointint to "dac dspvel" - scan markup]
 	lac o164372	"[crossed out - scan markup]
 	dac clistp i	"[crossed out - scan markup]
-	cla		"[crossed out - scan markup]
+	cla             "[crossed out - scan markup]
 	jms dsplanet	"[crossed out - scan markup]
-loop4:			"[inside a drawn box - scan markup]
+loop4:                  "[inside a drawn box - scan markup]
 	sys time "put delay here.....
 "** 12-92-119.pdf page 3
 	dzm dispcl
