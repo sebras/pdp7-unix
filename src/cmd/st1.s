@@ -6,7 +6,7 @@ t = 0
 start:                  "[------ stuff for gravity - scan markup]
 	law 13
 	sys sysloc
-	dac .pbson
+	dac .pbson	" *pbson = keyinput
 	lac pww
 	dac 1f          " *1 = pww
 	dac 2f          " *2 = pww
@@ -37,7 +37,7 @@ start:                  "[------ stuff for gravity - scan markup]
 	dac lanflg
 	dzm crflg
 	dzm goflg
-	dzm .pbsint
+	dzm .pbsint	" zero pbsint
 	dzm forflg
 	dzm bacflg
 	dzm dspflg	"[line connecting this instruction to... - scan markup]
@@ -143,12 +143,12 @@ loop4:                  "[inside a drawn box - scan markup]
 	jmp loop " check 2-display question
 
 contrl: 0
-	lac i .pbson
-	xor .pbsint
-	and .pbson i
+	lac i .pbson	" load key states into AC
+	xor .pbsint	" AC ^= pbsint
+	and .pbson i	" AC &= pbson
 	sna
 	jmp noneon
-	lmq
+	lmq		" button 1 pressed
 	spa ral
 	sys exit
 	sma
@@ -174,25 +174,25 @@ contrl: 0
 	dac scale
 	jms dspsca "downrange
 noneon:
-	dzm forflg
-	dzm bacflg
-	lac i .pbson
-	dac .pbsint
-	als 2
+	dzm forflg	" forflg = 0
+	dzm bacflg	" bacflg = 0
+	lac i .pbson	" AC = *pbson
+	dac .pbsint	" *pbsint = AC
+	als 2		" AC = *pbson << 2
 	sma
 	jmp 1f
-	lac dhalt
-	dac forflg
-	lac goflg
+	lac dhalt	" button 1 pressed
+	dac forflg	" forflg = AC = dhalt
+	lac goflg	" AC = goflg
 	sma
 "** 12-92-119.pdf page 4
-	dzm lanflg
+	dzm lanflg	" lanflg = 0
 1:
-	lac i .pbson
-	als 3
-	sma
+	lac i .pbson	" AC = *pbson
+	als 3		" AC <<= 3
+	sma		
 	jmp 1f
-	lac dhalt
+	lac dhalt	" button 4 pressed
 	dac bacflg
 	lac goflg
 	sma
@@ -202,7 +202,7 @@ noneon:
 	als 4
 	sma
 	jmp 1f
-	ral
+	ral		" button 5 pressed
 	spa
 	jmp i contrl
 	dzm 9f+t
@@ -211,7 +211,7 @@ noneon:
 	ral
 	sma
 	jmp i contrl
-	lac dhalt
+	lac dhalt	" button 6 pressed
 	dac 9f+t
 2:
 	fld; cphi
