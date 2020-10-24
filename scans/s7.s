@@ -7,14 +7,14 @@ pibreak:
    dpsf
    jmp 1f
 
-   dpcf
-   dprs
+   dpcf		" clear dataphone flags
+   dprs		" store data phone state at dpstat
    dac dpstat
    sma ral
    jmp 2f
-   dprc
-   dac dpchar
-   -1
+   dprc		" AC = PARITY | 9 cleared bits | 7 bits received character
+   dac dpchar	" store parity and received character at dpchar
+   -1		" set all bits in dpread to indicate character read
    dac dpread
    lac dpstat
    ral

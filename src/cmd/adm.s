@@ -340,10 +340,10 @@ noc: 0
 opt: tbuf
 
 connect: 0
-   dpon
-   dpop
+   dpon			" set auto answer mode
+   dpop			" set odd parity
 
-   law 4
+   law 4		
    sys sysloc
    tad d14
    dac systime

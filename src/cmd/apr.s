@@ -1,14 +1,14 @@
 "** 05-1-4.pdf page 19
 " apr
 
-   lac 017777 i
+   lac 017777 i		" check if four arguments?
    sad d4
-   jmp nofiles
-   lac 017777
+   jmp nofiles		" no
+   lac 017777		" yes
    tad d1
    dac name
    jms connect
-   sys time
+   sys time		" get time?
    llss 9
    ecla llss 3
    tad o60
@@ -283,22 +283,22 @@ getc: 0
    jmp getc i
 
 hangup:
-   lac d1
+   lac d1		" print 'hangup\n' to stdout
    sys write; m1; m1s
    jmp stop
 
 abort:
-   lac d1
+   lac d1		" print 'aborted\n' to stdout
    sys write; m2; m2s
    jmp stop
 
 nofiles:
-   lac d1
+   lac d1		" print 'usage: apr files\ndial x5380 on the dataphone\n' to stdout
    sys write; m3; m3s
    sys exit
 
 discon:
-   lac d1
+   lac d1		" print 'disconnected\n' on stdout
    sys write; m4; m4s
    jmp stop
 
@@ -309,7 +309,7 @@ m2:
    <ab>;<or>;<te>;<d 012
 m2s = .-m2
 m3:
-   <us>;<ag>;<e;<;;040;<ap>;<r 040; <fi>;<le>;<s 012
+   <us>;<ag>;<e;<:;040;<ap>;<r 040; <fi>;<le>;<s 012
    <di>;<al>;040;<x;<5;<3;<8;<0 040; <on>;040;<th>;<e 040
    <da>;<ta>;<ph>;<on>;<e 012
 m3s = .-m3
@@ -319,8 +319,8 @@ m4s = .-m4
 "** 05-1-4.pdf page 24
 
 stop:
-   dpof
-   sys exit
+   dpof			" data phone off, interrupts off
+   sys exit		" exit program
 
 ipt: 0
 eipt: 0
