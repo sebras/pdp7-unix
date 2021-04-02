@@ -166,10 +166,10 @@ adv1:
    lac o75170			" =x
    dac i 10
    isz nwds
-   lac ob1
+   lac ob1			" -b
    dac i 10
    isz nwds
-   lac sp
+   lac sp			" +0
    dac i 10
    isz nwds
    lac nins
